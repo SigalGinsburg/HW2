@@ -17,6 +17,21 @@ public class DateTime extends Date {
             this.minute=0;
     }
 
+    public int getHour() {
+        return hour;
+    }
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof DateTime)) {
