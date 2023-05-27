@@ -18,18 +18,26 @@ public class DateTime extends Date {
     }
 
     public int getHour() {
-        return hour;
+        return this.hour;
     }
     public void setHour(int hour) {
-        this.hour = hour;
+        if ((hour>=0)&&(hour<=23)) {
+            this.hour = hour;
+        }
+        else
+        this.hour =0;
     }
 
     public int getMinute() {
-        return minute;
+        return this.minute;
     }
 
     public void setMinute(int minute) {
-        this.minute = minute;
+        if ((minute>=0)&&(minute<=59)) {
+            this.minute = minute;
+        }
+        else
+        this.minute =0;
     }
 
     @Override
