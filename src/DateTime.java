@@ -25,7 +25,7 @@ public class DateTime extends Date {
             this.hour = hour;
         }
         else
-        this.hour =0;
+            this.hour =0;
     }
 
     public int getMinute() {
@@ -37,7 +37,7 @@ public class DateTime extends Date {
             this.minute = minute;
         }
         else
-        this.minute =0;
+            this.minute =0;
     }
 
     @Override
