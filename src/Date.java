@@ -24,6 +24,24 @@ public Date(int year, int month, int day) {
     }
 
 }
+protected boolean isDate(){
+    return true;
+    }
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Date)){
+            return false;
+        }
+        Date otherDate = (Date) other;
+        if(otherDate.isDate()){
+            return this.year == otherDate.year && this.month == otherDate.month &&
+                    this.day == otherDate.day;
+        }
+        else{
+            return false;
+        }
+    }
+
 
 
 }
