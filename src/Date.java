@@ -25,7 +25,12 @@ public class Date {
     }
 
     public void setDay(int day) {
-        this.day = day;
+        if (day >= 1 && day <= 31) {
+            this.day = day;
+            ;
+        } else {
+            this.day = 1;
+        }
     }
 
     public int getDay() {
@@ -33,7 +38,11 @@ public class Date {
     }
 
     public void setMonth(int month) {
-        this.month = month;
+        if (month >= 1 && month <= 12) {
+            this.month = month;
+        } else {
+            this.month = 1;
+        }
     }
 
     public int getMonth() {
@@ -41,7 +50,11 @@ public class Date {
     }
 
     public void setYear(int year) {
-        this.year = year;
+        if (year >= -3999 && year <= 3999) {
+            this.year = year;
+        } else {
+            this.year = 0;
+        }
     }
 
     public int getYear() {
