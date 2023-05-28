@@ -19,10 +19,7 @@ public class Product extends Function {
         return string;
 
     }
-    @Override
-    public Product derivative() {
 
-    }
 
 
 }
