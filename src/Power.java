@@ -16,12 +16,19 @@ public class Power extends Function {
         return string;
 
     }
+
+    /**
+     *
+     * @return derivative of this function
+     *[(f(x))^n]'=n*f'(x)*[(f(x))^n-1]
+     */
+
     @Override
     public Function derivative() {
-        Constant constantPower= new Constant(this.power);
-        Product temp1= new Product(this.f1.derivative(),constantPower);
-        Power temp2 = new Power(this.f1,power-1);
-        Product derivativePower = new Product(temp1,temp2);
+        Constant constantPower= new Constant(this.power); //turning the value of the power into a constant function.
+        Product temp1= new Product(this.f1.derivative(),constantPower); // temp1= n*f'(x)
+        Power temp2 = new Power(this.f1,power-1); // temp2= (f(x))^n-1
+        Product derivativePower = new Product(temp1,temp2);// temp1*temp2
         return derivativePower;
     }
 
