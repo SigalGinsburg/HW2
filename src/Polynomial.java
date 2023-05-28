@@ -1,2 +1,3 @@
-public class Polynomial {
+public class Polynomial extends Function{
+
 }
