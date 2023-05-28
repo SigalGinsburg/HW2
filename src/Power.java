@@ -8,7 +8,8 @@ public class Power extends Function {
     }
     @Override
     public double valueAt(double point){
-
+        double result= Math.pow(this.f1.valueAt(point),power);
+        return result;
     }
     @Override
     public String toString(){

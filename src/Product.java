@@ -15,7 +15,7 @@ public class Product extends Function {
 
     @Override
     public String toString(){
-        String string =String.format("(%s*%s)", this.f1.toString(), this.f2.toString());
+        String string =String.format("(%s * %s)", this.f1.toString(), this.f2.toString());
         return string;
 
     }

@@ -14,8 +14,9 @@ public class Quotient extends Function {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
+        String string = String.format("(%s / %s)", this.f1.toString(), this.f2.toString());
+        return string;
     }
-
 
 }
