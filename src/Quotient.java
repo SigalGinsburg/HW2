@@ -19,4 +19,18 @@ public class Quotient extends Function {
         return string;
     }
 
+    /**
+     * [f(x)/g(x)]' = [(f'(x)*g(x)-g'(x)*f(x)) / g(x)^2]
+     * @return derivative
+     */
+    @Override
+    public Function derivative(){
+        Product temp1= new Product(this.f1.derivative(),this.f2); //f'(x)*g(x)
+        Product temp2 = new Product(this.f1,this.f2.derivative()); //g'(x)*f(x)
+        Difference numerator = new Difference(temp1, temp2); //f'(x)*g(x)-g'(x)*f(x)
+        Power denominator = new Power(this.f2, 2); //g(x)^2
+        Quotient derivative = new Quotient(numerator,denominator);
+        return derivative;
+    }
+
 }

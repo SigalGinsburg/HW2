@@ -3,6 +3,7 @@ public abstract class Function {
     @Override
     public abstract String toString();
     public abstract Function derivative();
+
     public double bisectionMethod(double left, double right){
         while ((right - left) > (1e-5)){
             double mid = (left + right) / 2;
@@ -43,6 +44,8 @@ public abstract class Function {
         return valueAt(current);
     }
     public double taylorPolynomial(int n){
+        return 0.0;
 
     }
 }
+
