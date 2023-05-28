@@ -15,7 +15,6 @@ public class Power extends Function {
     public String toString(){
         String string =String.format("((%s)^%d)", this.f1.toString(), this.power);
         return string;
-
     }
 
     /**
@@ -23,7 +22,6 @@ public class Power extends Function {
      * @return derivative of this function
      *[(f(x))^n]'=n*f'(x)*[(f(x))^n-1]
      */
-
     @Override
     public Function derivative() {
         Constant constantPower= new Constant(this.power); //turning the value of the power into a constant function.
