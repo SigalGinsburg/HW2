@@ -21,6 +21,11 @@ public class MultiProduct extends Function{
         return result;
     }
 
+    /**
+     *
+     * @return derivative
+     */
+
     @Override
     public Function derivative() {
         int length = this.multiProductFunctionList.length;
@@ -40,5 +45,23 @@ public class MultiProduct extends Function{
             }
         }
         return derivative;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        int length = this.multiProductFunctionList.length;
+        for (int i = 0; i < length; i++) {
+            string.append(this.multiProductFunctionList[i].toString());
+            if (i != length - 1) {
+                string.append(" * ");
+            }
+        }
+
+        String result = string.toString();
+        result = String.format("(%s)", result);
+        return result;
+    }
+
     }
 }
