@@ -11,5 +11,4 @@ public class Polynomial<T extends Number> extends Function {
         }
     }
 
-    // Rest of the class implementation
 }

@@ -31,7 +31,19 @@ public class MultiSum extends Function {
         return derivativeMultiSum;
     }
 
-
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append("(");
+        string.append(this.multiSumFunctionList[0].toString());
+        for (int i = 1; i < listLength; i++) {
+            String tempString= String.format(" * %s",this.multiSumFunctionList[i].toString());
+            string.append(tempString);
+        }
+        string.append(")");
+        String result= string.toString();
+        return result;
+    }
 
 
 
