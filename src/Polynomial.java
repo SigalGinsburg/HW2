@@ -3,10 +3,10 @@ public class Polynomial<T extends Number> extends Function {
 
     public Polynomial(T... nums) {
         int listLength = nums.length;
-        polynom = (T[]) new Number[listLength];
+        this.polynom = (T[]) new Number[listLength];
         int i = 0;
         for (T num : nums) {
-            polynom[i] = num;
+            this.polynom[i] = num;
             i++;
         }
     }
