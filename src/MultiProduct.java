@@ -22,7 +22,10 @@ public class MultiProduct extends Function{
     }
 
     /**
-     *
+     * The calculation is done according to the given instructions:
+     * We created a multi sum array, where each item is represented by a multi power
+     * each multi power in the array contains a certain function's derivative
+     * doubled by the rest of the functions
      * @return derivative
      */
 
