@@ -20,9 +20,8 @@ public class Product extends Function {
 
     }
     /**
-     *
      * @return derivative of this function
-     *[f(x)*g(x)]'=[f(x)]'*g(x)+[g(x)]'*f(x)
+     * [f(x)*g(x)]'=[f(x)]'*g(x)+[g(x)]'*f(x)
      */
     @Override
     public Function derivative() {

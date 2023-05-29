@@ -18,9 +18,8 @@ public class Power extends Function {
     }
 
     /**
-     *
      * @return derivative of this function
-     *[(f(x))^n]'=n*f'(x)*[(f(x))^n-1]
+     * [(f(x))^n]'=n*f'(x)*[(f(x))^n-1]
      */
     @Override
     public Function derivative() {

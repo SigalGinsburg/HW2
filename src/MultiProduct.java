@@ -33,7 +33,7 @@ public class MultiProduct extends Function{
     public Function derivative() {
         int length = this.multiProductFunctionList.length;
         int k = 0;
-        MultiSum derivative = new MultiSum();
+        MultiProduct derivative = new MultiProduct();
         MultiProduct multiProduct = new MultiProduct();
         while (k < length * length) {
             for (int i = 0; i < length; i++) {
@@ -44,7 +44,7 @@ public class MultiProduct extends Function{
                     multiProduct.multiProductFunctionList[k] = this.multiProductFunctionList[j];
                     k++;
                 }
-                derivative.multiSumFunctionList[i] = multiProduct;
+                derivative.multiProductFunctionList[i] = multiProduct;
             }
         }
         return derivative;
