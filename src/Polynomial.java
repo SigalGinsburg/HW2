@@ -72,10 +72,21 @@ public class Polynomial extends Function {
                 if(i != length-1){string.append(" + ");}
             }
             else if (this.polynom[i] != 0) {
-                string.append(this.polynom[i].toString());
-                string.append(" x^");
-                string.append(i);
-                if(i != length-1){string.append(" + ");}
+                if (this.polynom[i] == Math.floor(this.polynom[i])) {
+                    string.append((polynom[i].intValue()));
+                    string.append(" x^");
+                    string.append(i);
+                    if (i != length - 1) {
+                        string.append(" + ");
+                    }
+                } else {
+                    string.append(this.polynom[i].toString());
+                    string.append(" x^");
+                    string.append(i);
+                    if (i != length - 1) {
+                        string.append(" + ");
+                    }
+                }
             }
         }
 

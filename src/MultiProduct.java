@@ -1,9 +1,10 @@
 public class MultiProduct extends Function{
     private Function[] multiProductFunctionList;
+    private int length;
 
     public MultiProduct(Function... functions) {
-        int listLength = functions.length;
-        this.multiProductFunctionList = new Function[listLength];
+        this.length = functions.length;
+        this.multiProductFunctionList = new Function[this.length];
         int i = 0;
         for (Function f : functions) {
             multiProductFunctionList[i] = f;
@@ -21,6 +22,22 @@ public class MultiProduct extends Function{
         return result;
     }
 
+    public MultiProduct copy(){
+        MultiProduct copy = new MultiProduct();
+        Function[] copyFunctionList = new Function[this.length];
+        for(int i=0; i < this.length; i++){
+            copyFunctionList[i] = this.multiProductFunctionList[i];
+        }
+        copy.multiProductFunctionList = copyFunctionList;
+        copy.length = this.length;
+        return copy;
+    }
+    private MultiProduct partOfDerivative(int k){
+        this.multiProductFunctionList[k] = this.multiProductFunctionList[k].derivative();
+        return this;
+    }
+
+
     /**
      * The calculation is done according to the given instructions:
      * We created a multi sum array, where each item is represented by a multi power
@@ -32,20 +49,13 @@ public class MultiProduct extends Function{
     @Override
     public Function derivative() {
         int length = this.multiProductFunctionList.length;
-        int k = 0;
-        MultiProduct derivative = new MultiProduct();
-        MultiProduct multiProduct = new MultiProduct();
-        while (k < length * length) {
-            for (int i = 0; i < length; i++) {
-                Function smallDerivative = this.multiProductFunctionList[i].derivative();
-                multiProduct.multiProductFunctionList[k] = smallDerivative;
-                k++;
-                for (int j = i+1; j < length; j++) {
-                    multiProduct.multiProductFunctionList[k] = this.multiProductFunctionList[j];
-                    k++;
-                }
-                derivative.multiProductFunctionList[i] = multiProduct;
-            }
+        MultiSum derivative = new MultiSum();
+        Function[] derivativeFunctionList = new Function[this.length];
+        derivative.multiSumFunctionList = derivativeFunctionList;
+        for (int i = 0; i < length; i++) {
+            MultiProduct multiProduct = this.copy();
+            multiProduct = multiProduct.partOfDerivative(i);
+            derivative.multiSumFunctionList[i] = multiProduct;
         }
         return derivative;
     }
