@@ -40,7 +40,7 @@ public class Polynomial extends Function {
         double value;
         for (int i = 0; i < newLength; i++) {
             value = derivativePolynom.polynom[i];
-            derivativePolynom.polynom[i] = value * i;
+            derivativePolynom.polynom[i] = value * (i+1);
         }
         return derivativePolynom;
 
@@ -49,7 +49,7 @@ public class Polynomial extends Function {
 
     @Override
     public double valueAt(double point) {
-        double product = point;
+        double product = 1;
         double value = 0;
         for (int i = 0; i < length; i++) {
             value += (polynom[i] * product);
@@ -74,6 +74,10 @@ public class Polynomial extends Function {
     }
 
     public void helpFunctionToString(StringBuilder string, int num) {
+        if (num==1){
+            helpFunctionToString1(string,num);
+            return;
+        }
         if (this.polynom[num] != 0) {
             if (string.length() > 0) {
                 string.append(" + ");
@@ -119,5 +123,33 @@ public class Polynomial extends Function {
 
 
         }
+    public void helpFunctionToString1(StringBuilder string, int num) {
+        if (this.polynom[num] != 0) {
+            if (string.length() > 0) {
+                string.append(" + ");
+            }
+            if (this.polynom[num] == 1) {
+
+                string.append("x");
+            } else if (this.polynom[num] == -1) {
+                string.append("-x");
+
+
+            }else if (this.polynom[num] == Math.floor(this.polynom[num])) {
+                string.append((polynom[num].intValue()));
+                string.append("x");
+
+            } else {
+                string.append(this.polynom[num].toString());
+                string.append("x");
+
+            }
+        }
     }
+
+
+
+
+    }
+
 

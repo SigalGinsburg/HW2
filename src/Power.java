@@ -13,7 +13,7 @@ public class Power extends Function {
     }
     @Override
     public String toString(){
-        String string =String.format("(%s ^ %d)", this.f1.toString(), this.power);
+        String string =String.format("(%s^%d)", this.f1.toString(), this.power);
         return string;
     }
 
