@@ -61,7 +61,12 @@ public class Polynomial extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         if (this.length != 0) {
-            string.append(this.polynom[0].intValue());
+            if(this.polynom[0] == Math.floor(this.polynom[0])){
+                string.append(this.polynom[0].intValue());
+            }
+            else{
+                string.append(this.polynom[0]);
+            }
         }
         for (int i = 1; i < length; i++) {
             if((this.polynom[i] == 1) && this.polynom[i] == Math.floor(this.polynom[i])){
