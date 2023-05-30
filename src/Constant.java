@@ -1,4 +1,4 @@
-public class Constant extends Function{
+public class Constant extends Function {
     private final double constant;
 
     public Constant(double constant) {
@@ -9,16 +9,22 @@ public class Constant extends Function{
     public double valueAt(double point) {
         return constant;
     }
+
     @Override
     public Constant derivative() {
         Constant zero = new Constant(0);
         return zero;
 
     }
+
     @Override
-    public String toString(){
-        String zero="0";
-        String string =String.format("(%s)",zero );
+    public String toString() {
+        String string;
+        if(this.roundToInt(this.constant)) {
+            string = String.format("(%s)", (int) this.constant);
+        }
+        else
+        string = String.format("(%s)", this.constant);
         return string;
     }
 

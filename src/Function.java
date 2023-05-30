@@ -56,5 +56,16 @@ public abstract class Function {
         Polynomial taylorPolynomia= new Polynomial(polynomTaylor);
         return taylorPolynomia;
     }
+
+    public boolean roundToInt(double num){
+        if (num==Math.floor(num)){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
 }
 
