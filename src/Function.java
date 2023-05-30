@@ -53,8 +53,8 @@ public abstract class Function {
             valueAtZero=tempDerivative.valueAt(0);
             polynomTaylor[i]= valueAtZero*(double) (1/i);
         }
-        Polynomial taylorPolynomia= new Polynomial(polynomTaylor);
-        return taylorPolynomia;
+        Polynomial taylorPolynomial= new Polynomial(polynomTaylor);
+        return taylorPolynomial;
     }
 
     public boolean roundToInt(double num){

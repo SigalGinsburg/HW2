@@ -2,7 +2,7 @@ public class Polynomial extends Function {
     private Double[] polynom;
     private int length;
 
-//    public Polynomial(Double... nums) {
+    //    public Polynomial(Double... nums) {
 //        int length = nums.length;
 //        this.polynom = new Double[length];
 //        int i = 0;
@@ -20,24 +20,25 @@ public class Polynomial extends Function {
             this.polynom[i] = num;
             i++;
         }
-        this.length=length;
+        this.length = length;
     }
-    public Polynomial pop(){
-        int newLength= this.length-1;
-        double[] newPolynomT=  new double[newLength];
-        for (int i=1;i<newLength;i++){
-            newPolynomT[i-1]=this.polynom[i];
+
+    public Polynomial pop() {
+        int newLength = this.length - 1;
+        double[] newPolynomT = new double[newLength];
+        for (int i = 1; i < newLength; i++) {
+            newPolynomT[i - 1] = this.polynom[i];
         }
-        Polynomial newPolynom=new Polynomial(newPolynomT);
+        Polynomial newPolynom = new Polynomial(newPolynomT);
         return newPolynom;
     }
 
     @Override
-    public Polynomial derivative(){
-        int newLength= this.length-1;
-        Polynomial derivativePolynom=this.pop();
+    public Polynomial derivative() {
+        int newLength = this.length - 1;
+        Polynomial derivativePolynom = this.pop();
         double value;
-        for (int i=0; i<newLength;i++){
+        for (int i = 0; i < newLength; i++) {
             value = derivativePolynom.polynom[i];
             derivativePolynom.polynom[i] = value * i;
         }
@@ -50,7 +51,7 @@ public class Polynomial extends Function {
     public double valueAt(double point) {
         double product = point;
         double value = 0;
-        for(int i = 0; i< length; i++){
+        for (int i = 0; i < length; i++) {
             value += (polynom[i] * product);
             product = point * product;
         }
@@ -61,44 +62,70 @@ public class Polynomial extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         if (this.length != 0) {
-            if(this.polynom[0] == Math.floor(this.polynom[0])){
-                string.append(this.polynom[0].intValue());
-            }
-            else{
-                string.append(this.polynom[0]);
-            }
+            helpFunctionToStringFirst(string, 0);
         }
         for (int i = 1; i < length; i++) {
-            if((this.polynom[i] == 1) && this.polynom[i] == Math.floor(this.polynom[i])){
-                string.append(" + ");
-                string.append("x^");
-                string.append(i);
-            }
-            else if ((this.polynom[i] == -1) && this.polynom[i] == Math.floor(this.polynom[i])){
-                string.append(" + ");
-                string.append("-x^");
-                string.append(i);
-            }
-            else if (this.polynom[i] != 0) {
-                if (this.polynom[i] == Math.floor(this.polynom[i])) {
-                    string.append(" + ");
-                    string.append((polynom[i].intValue()));
-                    string.append("x^");
-                    string.append(i);
-                } else {
-                    string.append(" + ");
-                    string.append(this.polynom[i].toString());
-                    string.append("x^");
-                    string.append(i);
-                }
-            }
+            helpFunctionToString(string, i);
         }
-
         String result = string.toString();
         result = String.format("(%s)", result);
 
         return result;
     }
 
+    public void helpFunctionToString(StringBuilder string, int num) {
+        if (this.polynom[num] != 0) {
+            if (this.polynom[num] == 1) {
+                if (!(string.equals(""))) {
+                    string.append(" + ");
+                }
+                string.append("x^");
+                string.append(num);
+            } else if (this.polynom[num] == -1) {
+                if (!(string.equals(""))) {
+                    string.append(" + ");
+                }
+                string.append("-x^");
+                string.append(num);
 
-}
+
+            }else if (this.polynom[num] == Math.floor(this.polynom[num])) {
+                if (!(string.equals(""))) {
+                    string.append(" + ");
+                }
+                string.append((polynom[num].intValue()));
+                    string.append("x^");
+                    string.append(num);
+
+                } else {
+                if (!(string.equals(""))) {
+                    string.append(" + ");
+                }
+                string.append(this.polynom[num].toString());
+                    string.append("x^");
+                    string.append(num);
+
+                }
+            }
+        }
+
+    public void helpFunctionToStringFirst(StringBuilder string, int num) {
+        if (this.polynom[num] != 0) {
+            if (this.polynom[num] == 1) {
+                string.append(1);
+            } else if (this.polynom[num] == -1) {
+                string.append(-1);
+
+            } else  if (this.polynom[num] == Math.floor(this.polynom[num])) {
+                    string.append((polynom[num].intValue()));
+                    string.append(num);
+                } else {
+                    string.append(this.polynom[num].toString());
+                    string.append(num);
+                }
+            }
+
+
+        }
+    }
+
