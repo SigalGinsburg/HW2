@@ -70,30 +70,26 @@ public class Polynomial extends Function {
         }
         for (int i = 1; i < length; i++) {
             if((this.polynom[i] == 1) && this.polynom[i] == Math.floor(this.polynom[i])){
-                string.append(" x^");
+                string.append(" + ");
+                string.append("x^");
                 string.append(i);
-                if(i != length-1){string.append(" + ");}
             }
             else if ((this.polynom[i] == -1) && this.polynom[i] == Math.floor(this.polynom[i])){
-                string.append(" -x^");
+                string.append(" + ");
+                string.append("-x^");
                 string.append(i);
-                if(i != length-1){string.append(" + ");}
             }
             else if (this.polynom[i] != 0) {
                 if (this.polynom[i] == Math.floor(this.polynom[i])) {
+                    string.append(" + ");
                     string.append((polynom[i].intValue()));
-                    string.append(" x^");
+                    string.append("x^");
                     string.append(i);
-                    if (i != length - 1) {
-                        string.append(" + ");
-                    }
                 } else {
+                    string.append(" + ");
                     string.append(this.polynom[i].toString());
-                    string.append(" x^");
+                    string.append("x^");
                     string.append(i);
-                    if (i != length - 1) {
-                        string.append(" + ");
-                    }
                 }
             }
         }
