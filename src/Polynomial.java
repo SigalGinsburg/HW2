@@ -62,21 +62,21 @@ public class Polynomial<T extends Number> extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            if(this.polynom[i] == (T) Integer.valueOf(1) && this.polynom[i] == this.polynom[i]){
+            if((this.polynom[i] == 1) && this.polynom[i] == Math.floor(this.polynom[i])){
                 string.append(" x^");
                 string.append(i);
-                string.append(" + ");
+                if(i != length-1){string.append(" + ");}
             }
-            else if (this.polynom[i] == (T) Integer.valueOf(-1) && this.polynom[i] == this.polynom[i]){
+            else if ((this.polynom[i] == -1) && this.polynom[i] == Math.floor(this.polynom[i])){
                 string.append(" -x^");
                 string.append(i);
-                string.append(" + ");
+                if(i != length-1){string.append(" + ");}
             }
-            else if (this.polynom[i] != (T) Integer.valueOf(0)) {
+            else if (this.polynom[i] != 0) {
                 string.append(this.polynom[i].toString());
                 string.append(" x^");
                 string.append(i);
-                string.append(" + ");
+                if(i != length-1){string.append(" + ");}
             }
         }
 
