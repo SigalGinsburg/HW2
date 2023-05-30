@@ -3,7 +3,6 @@ public abstract class Function {
     @Override
     public abstract String toString();
     public abstract Function derivative();
-
     public double bisectionMethod(double left, double right){
         while ((right - left) > (1e-5)){
             double mid = (left + right) / 2;
@@ -43,9 +42,19 @@ public abstract class Function {
         }
         return valueAt(current);
     }
-    public double taylorPolynomial(int n){
-        return 0.0;
-
+    public Polynomial taylorPolynomial(int n) {
+        Function tempDerivative;
+        double valueAtZero;
+        double [] polynomTaylor=new double[n+1];
+        valueAtZero= this.valueAt(0);
+        polynomTaylor[0]=valueAtZero;
+        for (int i=1; i<=n;i++){
+            tempDerivative=this.derivative();
+            valueAtZero=tempDerivative.valueAt(0);
+            polynomTaylor[i]= valueAtZero*(double) (1/i);
+        }
+        Polynomial taylorPolynomia= new Polynomial(polynomTaylor);
+        return taylorPolynomia;
     }
 }
 

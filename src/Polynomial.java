@@ -1,22 +1,33 @@
 public class Polynomial<T extends Number> extends Function {
-    private T[] polynom;
+    private Double[] polynom;
     private int length;
 
-    public Polynomial(T... nums) {
+    public Polynomial(Double... nums) {
         int length = nums.length;
-        this.polynom = (T[]) new Number[length];
+        this.polynom = new Double[length];
         int i = 0;
-        for (T num : nums) {
+        for (Double num : nums) {
             this.polynom[i] = num;
             i++;
         }
+        this.length=length;
+    }
+    public Polynomial(double[]nums) {
+        int length = nums.length;
+        this.polynom = new Double[length];
+        int i = 0;
+        for (double num : nums) {
+            this.polynom[i] = num;
+            i++;
+        }
+        this.length=length;
     }
     public Polynomial pop(){
-        int newLength= length-1;
-        T[] newPolynomT= (T[]) new Number[newLength];
-        newPolynomT[0]=polynom[1];
+        int newLength= this.length-1;
+        T[] newPolynomT=  new T[newLength];
+        newPolynomT[0]=this.polynom[1];
         for (int i=1;i<newLength;i++){
-            newPolynomT[i-1]=polynom[i];
+            newPolynomT[i-1]=this.polynom[i];
         }
         Polynomial newPolynom=new Polynomial(newPolynomT);
         return newPolynom;
@@ -24,11 +35,12 @@ public class Polynomial<T extends Number> extends Function {
 
     @Override
     public Polynomial derivative(){
-        int newLength= length-1;
+        int newLength= this.length-1;
         Polynomial derivativePolynom=this.pop();
+        double value;
         for (int i=0; i<newLength;i++){
-            double value = derivativePolynom.polynom[i].doubleValue();
-            derivativePolynom.polynom[i] = (T) Double.valueOf(value * i);
+            value = derivativePolynom.polynom[i];
+            derivativePolynom.polynom[i] = value * i;
         }
         return derivativePolynom;
 
@@ -40,7 +52,7 @@ public class Polynomial<T extends Number> extends Function {
         double product = point;
         double value = 0;
         for(int i = 0; i< length; i++){
-            value += ((double)polynom[i] * product);
+            value += (polynom[i] * product);
             product = point * product;
         }
         return value;
@@ -50,17 +62,17 @@ public class Polynomial<T extends Number> extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            if((int)this.polynom[i] == 1 && (double)this.polynom[i] == (int)this.polynom[i]){
+            if(this.polynom[i] == (T) Integer.valueOf(1) && this.polynom[i] == this.polynom[i]){
                 string.append(" x^");
                 string.append(i);
                 string.append(" + ");
             }
-            else if ((int)this.polynom[i] == -1 && (double)this.polynom[i] == (int)this.polynom[i]){
+            else if (this.polynom[i] == (T) Integer.valueOf(-1) && this.polynom[i] == this.polynom[i]){
                 string.append(" -x^");
                 string.append(i);
                 string.append(" + ");
             }
-            else if ((int)this.polynom[i] != 0) {
+            else if (this.polynom[i] != (T) Integer.valueOf(0)) {
                 string.append(this.polynom[i].toString());
                 string.append(" x^");
                 string.append(i);
@@ -73,4 +85,6 @@ public class Polynomial<T extends Number> extends Function {
 
         return result;
     }
+
+
 }
