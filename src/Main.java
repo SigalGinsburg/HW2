@@ -170,7 +170,7 @@ public class Main {
         System.out.println(name + " derivative: " + function.derivative());
         printTaylorPolynomial(function, name, taylorMaxOrder);
         System.out.println();
-    }
+    }.//
 
     private static void printFunctionValues(Function function, String name, int numberOfValues) {
         double[] xValues = new double[numberOfValues];
