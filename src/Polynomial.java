@@ -60,6 +60,7 @@ public class Polynomial extends Function {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
+        string.append(this.polynom[0].intValue());
         for (int i = 1; i < length; i++) {
             if((this.polynom[i] == 1) && this.polynom[i] == Math.floor(this.polynom[i])){
                 string.append(" x^");
