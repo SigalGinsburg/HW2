@@ -1,18 +1,18 @@
-public class Polynomial<T extends Number> extends Function {
+public class Polynomial extends Function {
     private Double[] polynom;
     private int length;
 
-    public Polynomial(Double... nums) {
-        int length = nums.length;
-        this.polynom = new Double[length];
-        int i = 0;
-        for (Double num : nums) {
-            this.polynom[i] = num;
-            i++;
-        }
-        this.length=length;
-    }
-    public Polynomial(double[]nums) {
+//    public Polynomial(Double... nums) {
+//        int length = nums.length;
+//        this.polynom = new Double[length];
+//        int i = 0;
+//        for (Double num : nums) {
+//            this.polynom[i] = num;
+//            i++;
+//        }
+//        this.length=length;
+//    }
+    public Polynomial(double... nums) {
         int length = nums.length;
         this.polynom = new Double[length];
         int i = 0;
@@ -24,8 +24,7 @@ public class Polynomial<T extends Number> extends Function {
     }
     public Polynomial pop(){
         int newLength= this.length-1;
-        T[] newPolynomT=  new T[newLength];
-        newPolynomT[0]=this.polynom[1];
+        double[] newPolynomT=  new double[newLength];
         for (int i=1;i<newLength;i++){
             newPolynomT[i-1]=this.polynom[i];
         }
