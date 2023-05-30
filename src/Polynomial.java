@@ -75,32 +75,24 @@ public class Polynomial extends Function {
 
     public void helpFunctionToString(StringBuilder string, int num) {
         if (this.polynom[num] != 0) {
+            if (string.length() > 0) {
+                string.append(" + ");
+            }
             if (this.polynom[num] == 1) {
-                if (!(string.equals(""))) {
-                    string.append(" + ");
-                }
+
                 string.append("x^");
                 string.append(num);
             } else if (this.polynom[num] == -1) {
-                if (!(string.equals(""))) {
-                    string.append(" + ");
-                }
                 string.append("-x^");
                 string.append(num);
 
 
             }else if (this.polynom[num] == Math.floor(this.polynom[num])) {
-                if (!(string.equals(""))) {
-                    string.append(" + ");
-                }
                 string.append((polynom[num].intValue()));
                     string.append("x^");
                     string.append(num);
 
                 } else {
-                if (!(string.equals(""))) {
-                    string.append(" + ");
-                }
                 string.append(this.polynom[num].toString());
                     string.append("x^");
                     string.append(num);
@@ -118,10 +110,10 @@ public class Polynomial extends Function {
 
             } else  if (this.polynom[num] == Math.floor(this.polynom[num])) {
                     string.append((polynom[num].intValue()));
-                    string.append(num);
+                    //string.append(num);
                 } else {
                     string.append(this.polynom[num].toString());
-                    string.append(num);
+                    //string.append(num);
                 }
             }
 
