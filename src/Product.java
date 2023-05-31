@@ -26,7 +26,7 @@ public class Product extends Function {
     @Override
     public Function derivative() {
         Product temp1= new Product(this.f.derivative(), this.g); // temp1= [f(x)]'*g(x)
-        Product temp2= new Product(this.f, this.g.derivative()); // temp2= [g(x)]'*f(x)
+        Product temp2= new Product(this.f,this.g.derivative()); // temp2= [g(x)]'*f(x)
         Sum derivativeProduct = new Sum(temp1,temp2);// temp1+temp2
         return derivativeProduct;
     }

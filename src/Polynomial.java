@@ -26,7 +26,7 @@ public class Polynomial extends Function {
     public Polynomial pop() {
         int newLength = this.length - 1;
         double[] newPolynomT = new double[newLength];
-        for (int i = 1; i < newLength; i++) {
+        for (int i = 1; i <= newLength; i++) {
             newPolynomT[i - 1] = this.polynom[i];
         }
         Polynomial newPolynom = new Polynomial(newPolynomT);

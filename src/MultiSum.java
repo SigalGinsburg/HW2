@@ -15,7 +15,7 @@ public class MultiSum extends Function {
     }
     @Override
     public double valueAt(double point){
-        int resultValueAtMultiSum=0;
+        double resultValueAtMultiSum=0;
         for (int i=0;i<listLength ;i++){
             resultValueAtMultiSum+=multiSumFunctionList[i].valueAt(point);
         }
