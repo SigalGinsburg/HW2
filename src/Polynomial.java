@@ -67,12 +67,12 @@ public class Polynomial extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         if (this.length != 0) {
-            if (this.length==1&&this.polynom[0]==0) {
+            if(this.helpFunctionAllZero()){
                 String result="(0)";
                 return result;
             }
             else
-                helpFunctionToStringFirst(string, 0);
+            helpFunctionToStringFirst(string, 0);
         }
         for (int i = 1; i < length; i++) {
             helpFunctionToString(string, i);
@@ -155,6 +155,15 @@ public class Polynomial extends Function {
         }
     }
 
+    public boolean helpFunctionAllZero(){
+
+        for (int i=0;i<this.length;i++){
+            if (this.polynom[i]!=0){
+                return false;
+            }
+        }
+    return true;
+    }
 
 
 
