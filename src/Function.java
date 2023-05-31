@@ -43,15 +43,17 @@ public abstract class Function {
         return valueAt(current);
     }
     public Polynomial taylorPolynomial(int n) {
-        Function tempDerivative;
+        Function tempDerivative=this;
         double valueAtZero;
+        double factorial=1;
         double [] polynomTaylor=new double[n+1];
         valueAtZero= this.valueAt(0);
         polynomTaylor[0]=valueAtZero;
         for (int i=1; i<=n;i++){
-            tempDerivative=this.derivative();
+            tempDerivative=tempDerivative.derivative();
             valueAtZero=tempDerivative.valueAt(0);
-            polynomTaylor[i]= valueAtZero*(double) (1/i);
+            factorial=factorial*i;
+            polynomTaylor[i]= valueAtZero/factorial;
         }
         Polynomial taylorPolynomial= new Polynomial(polynomTaylor);
         return taylorPolynomial;

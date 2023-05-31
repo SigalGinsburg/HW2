@@ -35,8 +35,13 @@ public class Polynomial extends Function {
 
     @Override
     public Polynomial derivative() {
+        Polynomial derivativePolynom;
+        if (this.length==0){
+            derivativePolynom= new Polynomial(0);
+            return derivativePolynom;
+        }
         int newLength = this.length - 1;
-        Polynomial derivativePolynom = this.pop();
+        derivativePolynom = this.pop();
         double value;
         for (int i = 0; i < newLength; i++) {
             value = derivativePolynom.polynom[i];
@@ -62,7 +67,12 @@ public class Polynomial extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         if (this.length != 0) {
-            helpFunctionToStringFirst(string, 0);
+            if (this.length==1&&this.polynom[0]==0) {
+                String result="(0)";
+                return result;
+            }
+            else
+                helpFunctionToStringFirst(string, 0);
         }
         for (int i = 1; i < length; i++) {
             helpFunctionToString(string, i);
@@ -120,8 +130,6 @@ public class Polynomial extends Function {
                     //string.append(num);
                 }
             }
-
-
         }
     public void helpFunctionToString1(StringBuilder string, int num) {
         if (this.polynom[num] != 0) {
