@@ -36,7 +36,7 @@ public class Polynomial extends Function {
     @Override
     public Polynomial derivative() {
         Polynomial derivativePolynom;
-        if (this.length==0){
+        if (this.length==0||this.length==1){
             derivativePolynom= new Polynomial(0);
             return derivativePolynom;
         }

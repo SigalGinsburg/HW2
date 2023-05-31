@@ -9,7 +9,7 @@ public class Power extends Function {
     @Override
     public double valueAt(double point){
         double thisVal= this.f1.valueAt(point);
-        if (thisVal==0)
+        if (thisVal==0&&power==0)
             return 0;
         double result= Math.pow(thisVal,power);
         return result;
@@ -26,7 +26,10 @@ public class Power extends Function {
      */
     @Override
     public Function derivative() {
-        Constant constantPower= new Constant(this.power); //turning the value of the power into a constant function.
+        Constant constantPower=new Constant(this.power); //turning the value of the power into a constant function.
+        if(power==0){
+            return constantPower;
+        }
         Product temp1= new Product(this.f1.derivative(),constantPower); // temp1= n*f'(x)
         Power temp2 = new Power(this.f1,power-1); // temp2= (f(x))^n-1
         Product derivativePower = new Product(temp1,temp2);// temp1*temp2
