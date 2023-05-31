@@ -8,10 +8,10 @@ public class Power extends Function {
     }
     @Override
     public double valueAt(double point){
-        double temp= this.f1.valueAt(point);
-        if (temp==0)
+        double thisVal= this.f1.valueAt(point);
+        if (thisVal==0)
             return 0;
-        double result= Math.pow(temp,power);
+        double result= Math.pow(thisVal,power);
         return result;
     }
     @Override
