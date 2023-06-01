@@ -34,7 +34,17 @@ public class MultiProduct extends Function{
     }
     private MultiProduct partOfDerivative(int k){
         this.multiProductFunctionList[k] = this.multiProductFunctionList[k].derivative();
-        return this;
+        Function temp = this.multiProductFunctionList[k];
+        Function[] partOfDerivativeList = new Function[this.length];
+        partOfDerivativeList[0] = this.multiProductFunctionList[k];
+        // Copy the elements before index k to the new array
+        System.arraycopy(this.multiProductFunctionList, 0, partOfDerivativeList, 1, k);
+        System.arraycopy(this.multiProductFunctionList, k + 1, partOfDerivativeList,
+                k + 1, length - k - 1);
+        MultiProduct partOfDerivative = new MultiProduct();
+        partOfDerivative.multiProductFunctionList = partOfDerivativeList;
+        partOfDerivative.length = this.length;
+        return partOfDerivative;
     }
 
 
