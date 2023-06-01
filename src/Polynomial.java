@@ -88,7 +88,8 @@ public class Polynomial extends Function {
             helpFunctionToString1(string,num);
             return;
         }
-        if (this.polynom[num] != 0) {
+        final double epsilon= Math.pow(10,-20);
+        if (this.polynom[num] >epsilon||this.polynom[num] <-epsilon) {
             if (string.length() > 0 && this.polynom[num]>0 ){
                     string.append(" + ");
                 }
