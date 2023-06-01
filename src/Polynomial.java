@@ -57,8 +57,8 @@ public class Polynomial extends Function {
         double product = 1;
         double value = 0;
         for (int i = 0; i < length; i++) {
-            value += (polynom[i] * product);
-            product = point * product;
+            value += (polynom[i] * Math.pow(point, i));
+            //product = point * product;
         }
         return value;
     }
@@ -67,12 +67,12 @@ public class Polynomial extends Function {
     public String toString() {
         StringBuilder string = new StringBuilder();
         if (this.length != 0) {
-            if(this.helpFunctionAllZero()){
-                String result="(0)";
+            if (this.helpFunctionAllZero()) {
+                String result = "(0)";
                 return result;
+            } else {
+                helpFunctionToStringFirst(string, 0);
             }
-            else
-            helpFunctionToStringFirst(string, 0);
         }
         for (int i = 1; i < length; i++) {
             helpFunctionToString(string, i);
@@ -89,25 +89,25 @@ public class Polynomial extends Function {
             return;
         }
         if (this.polynom[num] != 0) {
-            if (string.length() > 0) {
-                string.append(" + ");
+            if (string.length() > 0 && this.polynom[num]>0 ){
+                    string.append(" + ");
+                }
+            if (string.length() > 0 && this.polynom[num] < 0 ){
+                string.append(" - ");
             }
             if (this.polynom[num] == 1) {
-
                 string.append("x^");
                 string.append(num);
             } else if (this.polynom[num] == -1) {
                 string.append("-x^");
                 string.append(num);
-
-
             }else if (this.polynom[num] == Math.floor(this.polynom[num])) {
-                string.append((polynom[num].intValue()));
+                string.append(Math.abs(polynom[num].intValue()));
                     string.append("x^");
                     string.append(num);
 
                 } else {
-                string.append(this.polynom[num].toString());
+                string.append(Math.abs(this.polynom[num]));
                     string.append("x^");
                     string.append(num);
 
@@ -134,29 +134,52 @@ public class Polynomial extends Function {
     public void helpFunctionToString1(StringBuilder string, int num) {
         if (this.polynom[num] != 0) {
             if (string.length() > 0) {
-                string.append(" + ");
+                if (this.polynom[num] > 0) {
+                    string.append(" + ");
+                }
+                if (this.polynom[num] < 0) {
+                    string.append(" - ");
+                }
+                if (this.polynom[num] == 1 || this.polynom[num] == -1) {
+                    string.append("x");
+                } else {
+                    if (this.polynom[num] == Math.floor(this.polynom[num])) {
+                        string.append(Math.abs(polynom[num].intValue()));
+                        string.append("x");
+
+                    } else {
+                        string.append(Math.abs(this.polynom[num]));
+                        string.append("x");
+                    }
+
+                }
             }
-            if (this.polynom[num] == 1) {
+            else
+            {
+                if (this.polynom[num] < 0) {
+                    string.append("-");
+                }
+                if (this.polynom[num] == 1 || this.polynom[num] == -1) {
+                    string.append("x");
+                } else {
+                    if (this.polynom[num] == Math.floor(this.polynom[num])) {
+                        string.append((polynom[num].intValue()));
+                        string.append("x");
 
-                string.append("x");
-            } else if (this.polynom[num] == -1) {
-                string.append("-x");
+                    } else {
+                        string.append(this.polynom[num].toString());
+                        string.append("x");
+                    }
 
+                }
+            }
 
-            }else if (this.polynom[num] == Math.floor(this.polynom[num])) {
-                string.append((polynom[num].intValue()));
-                string.append("x");
-
-            } else {
-                string.append(this.polynom[num].toString());
-                string.append("x");
 
             }
         }
-    }
+
 
     public boolean helpFunctionAllZero(){
-
         for (int i=0;i<this.length;i++){
             if (this.polynom[i]!=0){
                 return false;

@@ -6,7 +6,7 @@ public class Negation extends Function{
     }
     @Override
     public double valueAt(double point){
-        return (this.f1.valueAt(point))*-1;
+        return (-1 * this.f1.valueAt(point));
     }
     @Override
     public String toString(){
