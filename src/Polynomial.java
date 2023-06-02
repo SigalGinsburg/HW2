@@ -94,7 +94,7 @@ public class Polynomial extends Function {
                     string.append("x^");
                     string.append(num);
                 } else if (this.polynom[num] == -1) {
-                    string.append("-x^");
+                    string.append("x^");
                     string.append(num);
                 } else if (this.polynom[num] == Math.floor(this.polynom[num])) {
                     string.append(Math.abs(polynom[num].intValue()));
@@ -168,12 +168,11 @@ public class Polynomial extends Function {
                     string.append("x");
                 } else {
                     if (this.polynom[1] == Math.floor(this.polynom[1])) { // if polynomial[0] is an integer
-                        string.append(Math.abs // change polynomial[0]'s to its absolut value
-                                (polynom[1].intValue())); // change polynomial[0]'s type into Int
+                        string.append(polynom[1].intValue());
                         string.append("x");
 
                     } else {
-                        string.append(Math.abs(this.polynom[1])); // change polynomial[0]'s to its absolut value
+                        string.append(this.polynom[1]);
                         string.append("x");
                     }
 

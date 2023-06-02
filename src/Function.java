@@ -30,7 +30,7 @@ public abstract class Function {
             current = next;
             next = current - (this.valueAt(current) / this.derivative().valueAt(current));
         }
-        return valueAt(current);
+        return current;
     }
 
     public double newtonRaphsonMethod(double a){
@@ -40,7 +40,7 @@ public abstract class Function {
             current = next;
             next = current - (this.valueAt(current) / this.derivative().valueAt(current));
         }
-        return valueAt(current);
+        return current;
     }
     public Polynomial taylorPolynomial(int n) {
         Function tempDerivative=this;
