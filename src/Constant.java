@@ -16,6 +16,7 @@ public class Constant extends Function {
         return zero;
 
     }
+    /** A method that prints "constant" as an integer for a hole number,and as a double otherwise */
 
     @Override
     public String toString() {

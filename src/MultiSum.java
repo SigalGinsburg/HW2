@@ -2,6 +2,7 @@ public class MultiSum extends Function {
 
     protected Function[] multiSumFunctionList;
     private int listLength;
+    /** A constructor that represents the "MultiSum" function as an array*/
 
     public MultiSum(Function... functions) {
         int listLength = functions.length;
@@ -13,6 +14,7 @@ public class MultiSum extends Function {
         }
         this.listLength= listLength;
     }
+    /** in order to calculate the value we sum the values of all functions */
     @Override
     public double valueAt(double point){
         double resultValueAtMultiSum=0;
@@ -21,6 +23,7 @@ public class MultiSum extends Function {
         }
         return resultValueAtMultiSum;
     }
+    /** The derivative is the sum of all functions derivatives */
     @Override
     public MultiSum derivative(){
         Function[] functions=new Function[listLength];
@@ -30,6 +33,11 @@ public class MultiSum extends Function {
         MultiSum derivativeMultiSum= new MultiSum(functions);
         return derivativeMultiSum;
     }
+
+    /**
+     * The methods application is done according to the given instructions.
+     * @return a string representing the function
+     */
 
     @Override
     public String toString() {

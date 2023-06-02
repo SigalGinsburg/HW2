@@ -1,6 +1,7 @@
 public class Polynomial extends Function {
     private Double[] polynom;
     private int length;
+    /** A constructor that represents the "Polynomial" function as an array*/
 
     public Polynomial(double... nums) {
         int length = nums.length;
@@ -13,7 +14,12 @@ public class Polynomial extends Function {
         this.length = length;
     }
 
-
+    /**
+     * (aX^n)' = anX^(n-1)
+     * we use the "pop" method in this function to do a "shift left" to the polynomial since
+     * a const's function derivative is 0 and there for irrelevant
+     * @return a polynomial derivative
+     */
     @Override
     public Polynomial derivative() {
         Polynomial derivativePolynom;
@@ -21,12 +27,12 @@ public class Polynomial extends Function {
             derivativePolynom= new Polynomial(0);
             return derivativePolynom;
         }
-        int newLength = this.length - 1;
-        derivativePolynom = this.pop();
+        int newLength = this.length - 1; // (const)' = 0 so the new polynomial is shorter
+        derivativePolynom = this.pop(); // shift left
         double value;
         for (int i = 0; i < newLength; i++) {
             value = derivativePolynom.polynom[i];
-            derivativePolynom.polynom[i] = value * (i+1);
+            derivativePolynom.polynom[i] = value * (i+1); // (aX^n)' = anX^(n-1)
         }
         return derivativePolynom;
 
@@ -37,6 +43,7 @@ public class Polynomial extends Function {
     public double valueAt(double point) {
         double value = polynom[0];
         for (int i = 1; i < length; i++) {
+            // we take the point in the power of i and multiply it by the coefficient
             value += (polynom[i] * Math.pow(point, i));
         }
         return value;

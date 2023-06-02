@@ -1,5 +1,6 @@
 public class Negation extends Function{
     private Function f1;
+    /** we create a negative function */
 
     public Negation (Function f1){
         this.f1=f1;
@@ -14,6 +15,12 @@ public class Negation extends Function{
         return string;
 
     }
+
+    /**
+     * -[f'(x)] = -[f(x)]' = -f'(x)
+     * The minus operator is calculated separately at "valueAt" and is shown in "toString".
+     * @return
+     */
     @Override
     public Negation derivative() {
         Negation derivativeNegation = new Negation(this.f1.derivative());

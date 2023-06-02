@@ -18,6 +18,7 @@ public class Difference extends Function {
         return string;
 
     }
+    /** ((f(x) + g(x))' = f'(x) + g'(x) */
     @Override
     public Difference derivative() {
         Difference derivativeDifference = new Difference(this.f1.derivative(),this.f2.derivative());
