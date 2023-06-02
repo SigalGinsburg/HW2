@@ -14,10 +14,9 @@ public class MultiProduct extends Function{
 
     @Override
     public double valueAt(double point) {
-        int length = this.multiProductFunctionList.length;
-        double result = 0;
+        double result = 1;
         for(int i = 0; i < length; i++){
-            result += this.multiProductFunctionList[i].valueAt(point);
+            result *= this.multiProductFunctionList[i].valueAt(point);
         }
         return result;
     }
@@ -58,10 +57,9 @@ public class MultiProduct extends Function{
 
     @Override
     public Function derivative() {
-        int length = this.multiProductFunctionList.length;
-        MultiSum derivative = new MultiSum();
+        MultiSum derivative;
         Function[] derivativeFunctionList = new Function[this.length];
-        derivative.multiSumFunctionList = derivativeFunctionList;
+        derivative= new MultiSum(derivativeFunctionList);
         for (int i = 0; i < length; i++) {
             MultiProduct multiProduct = this.copy();
             multiProduct = multiProduct.partOfDerivative(i);
