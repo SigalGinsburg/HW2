@@ -57,9 +57,8 @@ public class MultiProduct extends Function{
 
     @Override
     public Function derivative() {
-        MultiSum derivative;
         Function[] derivativeFunctionList = new Function[this.length];
-        derivative= new MultiSum(derivativeFunctionList);
+        MultiSum derivative= new MultiSum(derivativeFunctionList);
         for (int i = 0; i < length; i++) {
             MultiProduct multiProduct = this.copy();
             multiProduct = multiProduct.partOfDerivative(i);

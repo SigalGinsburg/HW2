@@ -42,6 +42,12 @@ public abstract class Function {
         }
         return current;
     }
+
+    /**
+     * this function returns a taylor polynomial of this function
+     * @param n represents taylor polynomial of order n
+     * @return new Polynomial object
+     */
     public Polynomial taylorPolynomial(int n) {
         Function tempDerivative=this;
         double valueAtZero;
