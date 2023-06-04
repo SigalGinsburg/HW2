@@ -60,8 +60,7 @@ public class DateTime extends Date {
 
     /** A method that assigns a different hash value to each object of type 'DateTime'
      * We ensured that the method is executed injectivly by multiplying each
-     * month value by the max value of possible days,
-     * and each year value by the max number of days and months
+     *
      */
 
     @Override
