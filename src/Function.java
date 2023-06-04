@@ -68,6 +68,12 @@ public abstract class Function {
         }
         return current;
     }
+    public boolean roundToInt(double num){
+        if (num==Math.floor(num)){
+            return true;
+        }
+        return false;
+    }
 
     /**
      * this function returns a taylor polynomial of this function
@@ -78,25 +84,20 @@ public abstract class Function {
         Function tempDerivative=this;
         double valueAtZero;
         double factorial=1;
-        double [] polynomTaylor=new double[n+1];
-        valueAtZero= this.valueAt(0);
+        double [] polynomTaylor=new double[n+1]; // creating new array for the new polynomial
+        valueAtZero= this.valueAt(0); // first term of taylor polynomial= this polynomial at 0=>f(0)
         polynomTaylor[0]=valueAtZero;
-        for (int i=1; i<=n;i++){
-            tempDerivative=tempDerivative.derivative();
-            valueAtZero=tempDerivative.valueAt(0);
-            factorial=factorial*i;
-            polynomTaylor[i]= valueAtZero/factorial;
+        for (int i=1; i<=n;i++){// derivative this polynomial n times
+            tempDerivative=tempDerivative.derivative(); // derivative of order i
+            valueAtZero=tempDerivative.valueAt(0); // calculate the value at 0 for the polynomial above
+            factorial=factorial*i; // factorial= (1/n!)
+            polynomTaylor[i]= valueAtZero/factorial; //(1/n!) * f^(derivative of order i)(0)
         }
         Polynomial taylorPolynomial= new Polynomial(polynomTaylor);
         return taylorPolynomial;
     }
 
-    public boolean roundToInt(double num){
-        if (num==Math.floor(num)){
-            return true;
-        }
-        return false;
-    }
+
 
 
 
