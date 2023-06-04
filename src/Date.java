@@ -50,7 +50,7 @@ public class Date {
     }
 
     public void setYear(int year) {
-        if (year >= -3999 && year <= 3999) { //// Allowed values in the task
+        if (year >= -3999 && year <= 3999) { // Allowed values in the task
             this.year = year;
         } else {
             this.year = 0;
@@ -86,7 +86,9 @@ public class Date {
     }
     /** A method that assigns a different hash value to each object of type 'date'
      * We ensured that the method is executed injectivly by multiplying each
-     * month value by the max value of possible days, and each year value by the max number of days and months
+     * month value by the max value of possible days,
+     * and each year value by the max number of days and months,
+     * This method was executed similarly to the one we saw in the tutorial.
      */
     @Override
     public int hashCode() {

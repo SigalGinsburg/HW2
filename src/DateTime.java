@@ -39,6 +39,7 @@ public class DateTime extends Date {
         else
             this.minute =0;
     }
+    /** This method is used to check whether an object is equal to DateTime by comparing all its args*/
 
     @Override
     public boolean equals(Object other) {
@@ -53,14 +54,22 @@ public class DateTime extends Date {
         boolean isSameMinute = (this.minute == otherDateTime.minute);
         return  isSameYear&&isSameMonth&&isSameDay&&isSameHour&&isSameMinute;
     }
+    /**
+     * A helper method for "equals". similar Implementation can be found in Date.
+     * @return true for date, false for dateTime
+     */
     @Override
     public boolean isDate() {
             return false;
     }
 
     /** A method that assigns a different hash value to each object of type 'DateTime'
-     * We ensured that the method is executed injectivly by multiplying each
-     *
+     * We ensured that the method is executed injectivly by:
+     * multiplying each hour by 60(max number of minutes per hour)
+     * multiplying each day by 24(max number of hours per day) *60
+     * multiplying each month by 31(max number of days per month) *60 *24
+     * and multiplying each year by 12(max number of months per year) *60 *24 *31
+     * This method was executed similarly to the one we saw in the tutorial.
      */
 
     @Override
