@@ -16,6 +16,7 @@ public class Sum extends Function {
         return string;
 
     }
+    /** (f(x)+g(x))' = f(x)' + g(x)' */
     @Override
     public Sum derivative() {
         Sum derivativeSum = new Sum(this.f1.derivative(), this.f2.derivative());

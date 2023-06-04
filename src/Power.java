@@ -30,11 +30,6 @@ public class Power extends Function {
         if(power==0){
             return constantPower;
         }
-//        Power temp1 = new Power(this.f1,power-1); // temp1= (f(x))^n-1
-//        Product temp2= new Product(temp1,this.f1.derivative()); // temp2= (f(x))^n-1 * f'(x)
-//        Product derivativePower = new Product(constantPower,temp2);// n * (f(x))^n-1 * f'(x)
-//        return derivativePower;
-
         Power temp1 = new Power(this.f1,power-1); // temp1= (f(x))^n-1
         MultiProduct derivativePower;
         derivativePower= new MultiProduct(constantPower,temp1, this.f1.derivative());// n * (f(x))^n-1 * f'(x)
